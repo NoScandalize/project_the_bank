@@ -1,0 +1,4 @@
+04:02:43 03-11-2023 [ERROR]: Não foi possível conectar ao banco de dados.
+04:02:43 03-11-2023 [ERROR]: Erro: Error: querySrv ENOTFOUND _mongodb._tcp.cluster0.ca7mmuk.mongod.net
+04:03:47 03-11-2023 [ERROR]: Não foi possível conectar ao banco de dados.
+04:03:47 03-11-2023 [ERROR]: Error: querySrv ENOTFOUND _mongodb._tcp.cluster0.ca7mmuk.mongod.net

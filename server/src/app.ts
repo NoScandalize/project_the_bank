@@ -10,6 +10,9 @@ import router from "./router";
 // DataBase
 import db from "../config/db";
 
+// Logger
+import { logger } from "../config/logger";
+
 // application instantiation
 const app = express();
 
@@ -25,5 +28,5 @@ app.listen(port,async () => {
 
     await db();
 
-    console.log(`Aplicação iniciada com sucesso na porta ${port}`);
+    logger.info(`Aplicação iniciada com sucesso na porta ${port}`);
 })
