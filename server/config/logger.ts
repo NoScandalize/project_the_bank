@@ -24,7 +24,7 @@ class Logger {
 
         const date: Date = new Date();
 
-        const formatedDate: string = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")} ${date.getDate().toString().padStart(2, "0")}-${date.getMonth()}-${date.getFullYear()}`
+        const formatedDate: string = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")} ${date.getDate().toString().padStart(2, "0")}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getFullYear()}`
 
         const log: string = `${formatedDate} [${"ERROR"}]: ${message}\n`;
 
@@ -44,7 +44,7 @@ class Logger {
 
         const date: Date = new Date();
 
-        const formatedDate: string = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")} ${date.getDate().toString().padStart(2, "0")}-${date.getMonth()}-${date.getFullYear()}`
+        const formatedDate: string = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")} ${date.getDate().toString().padStart(2, "0")}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getFullYear()}`
 
         const log: string = `${formatedDate} [${"WARN"}]: ${message}\n`;
 
@@ -62,7 +62,7 @@ class Logger {
 
         const date: Date = new Date();
 
-        const formatedDate: string = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")} ${date.getDate().toString().padStart(2, "0")}-${date.getMonth()}-${date.getFullYear()}`
+        const formatedDate: string = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")} ${date.getDate().toString().padStart(2, "0")}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getFullYear()}`
 
         const log: string = `${formatedDate} [${"DEBUG"}]: ${message}\n`;
 
@@ -80,7 +80,7 @@ class Logger {
 
         const date: Date = new Date();
 
-        const formatedDate: string = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")} ${date.getDate().toString().padStart(2, "0")}-${date.getMonth()}-${date.getFullYear()}`
+        const formatedDate: string = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")} ${date.getDate().toString().padStart(2, "0")}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getFullYear()}`
 
         const log: string = `${formatedDate} [${"HTTP"}]: ${message}\n`;
 
