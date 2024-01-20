@@ -5,7 +5,8 @@ import express from "express";
 import config from "config";
 
 // Routes
-import router from "./router";
+import MainRoutes from "./routes/MainRoutes";
+import UserRoutes from "./routes/UserRoutes";
 
 // DataBase
 import db from "../config/db";
@@ -25,14 +26,15 @@ app.use(express.json());
 // HTTP Request Logger
 app.use(morganMiddleware);
 
-app.use("/", router);
+// routes
+app.use("/", MainRoutes);
+app.use("/user", UserRoutes);
 
 // application port
 const port = config.get<number>("port");
 
-app.listen(port,async () => {
+app.listen(port, async () => {
+  await db();
 
-    await db();
-
-    logger.info(`Aplicação iniciada com sucesso na porta ${port}`);
-})
+  logger.info(`Aplicação iniciada com sucesso na porta ${port}`);
+});
