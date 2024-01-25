@@ -6,6 +6,6 @@ export default {
     // uri database cloud
     // dbUri: `mongodb+srv://${dbUser}:${dbPass}@cluster0.ca7mmuk.mongodb.net/?retryWrites=true&w=majority`,
     // uri database local
-    dbUri: "mongodb://127.0.0.1:27017",
+    dbUri: "mongodb://127.0.0.1:27017/theBank",
     env: "development",
 }

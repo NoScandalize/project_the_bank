@@ -18,10 +18,6 @@ const userSchema: Schema = new Schema(
             type: String,
             required: true
         },
-        confirmPassword: {
-            type: String,
-            required: true
-        },
         accountBalance: {
             type: Number,
             required: true
