@@ -25,7 +25,9 @@ export async function createUser(req: Request, res: Response) {
 
     try {
 
-        await UserModel.create(userData)
+        const user = await UserModel.create(userData)
+
+        logger.info(`CREATE - userID: ${user._id} userName: ${name}`)
 
         return res.status(201).json({ message: "O usuário foi criado com sucesso!" })
 
@@ -35,6 +37,33 @@ export async function createUser(req: Request, res: Response) {
 
     }
 
-    
+}
+
+export async function login (req: Request, res: Response) {
+
+    const { email, password } = req.body;
+
+    try {
+
+        const user = await UserModel.findOne( { email: email } )
+
+        if(!user) {
+            return res.status(422).json({ message: "Usuário não cadastrado" })
+        }
+
+        // check password
+        const checkPassword = await bcrypt.compare(password, user.password)
+
+        if(!checkPassword) {
+            return res.status(422).json({ message: "Email ou senha incorretos!" })
+        }
+
+        return res.status(201).json({ message: "Logado com sucesso!" })
+
+    } catch(err) {
+        
+        return res.status(500).json({ err })
+
+    }
 
 }

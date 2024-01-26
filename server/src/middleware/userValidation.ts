@@ -1,5 +1,8 @@
 import { body } from "express-validator";
 
+// helper funtion
+import checkIfUserExist from "../../helpers/check-if-user-exist";
+
 export const userCreateValidation = () => {
     return [
 
@@ -13,7 +16,15 @@ export const userCreateValidation = () => {
         .isString()
         .withMessage("O email é obrigatório!")
         .isEmail()
-        .withMessage("O email informado não é válido!"),
+        .withMessage("O email informado não é válido!")
+        .custom(async (value) => {
+            const check = await checkIfUserExist(value)
+
+            if(check) {
+                throw new Error("Email já está em uso!")
+            }
+        })
+        .withMessage("Email já está em uso!"),
 
         body("phone")
         .isNumeric()
@@ -36,4 +47,28 @@ export const userCreateValidation = () => {
         .withMessage("As senha precisam ser iguais!")
     ]
 
+}
+
+export const userLoginValidation = () => {
+    return [
+
+        body("email")
+        .isString()
+        .withMessage("É necessário preencher o email!")
+        .isEmail()
+        .withMessage("O email informado não é válido!")
+        .custom(async (value) => {
+            const check = await checkIfUserExist(value)
+
+            if(!check) {
+                throw new Error("Email ou senha estão incorretos!")
+            }
+        })
+        .withMessage("Email ou senha estão incorretos!"),
+
+        body("password")
+        .isString()
+        .withMessage("É necessário preencher a senha.")
+
+    ]
 }
