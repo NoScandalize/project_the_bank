@@ -7,6 +7,9 @@ import { UserModel } from "../models/User";
 // logger
 import { logger } from "../../config/logger";
 
+// token
+import createUserToken from "../../helpers/create-user-token"
+
 export async function createUser(req: Request, res: Response) {
   
     const { name, email, phone, password } = req.body;
@@ -27,9 +30,9 @@ export async function createUser(req: Request, res: Response) {
 
         const user = await UserModel.create(userData)
 
-        logger.info(`CREATE - userID: ${user._id} userName: ${name}`)
+        await createUserToken(user, req, res)
 
-        return res.status(201).json({ message: "O usuário foi criado com sucesso!" })
+        logger.info(`CREATE - userID: ${user._id} userName: ${name}`)
 
     } catch (err) {
 
@@ -58,7 +61,9 @@ export async function login (req: Request, res: Response) {
             return res.status(422).json({ message: "Email ou senha incorretos!" })
         }
 
-        return res.status(201).json({ message: "Logado com sucesso!" })
+        await createUserToken(user, req, res)
+
+        logger.info(`LOGIN - userID: ${user._id} userName: ${user.name}`)
 
     } catch(err) {
         
